@@ -1,0 +1,1 @@
+[{"speed":5,"foodForSatietyInKilos":5.5,"hungerDurationInTacts":8.0,"cell":{"x":5,"y":5,"availableDirections":[]},"isDead":false,"name":"Волк","weight":40.0,"maxNumberPerCell":40},{"speed":78,"foodForSatietyInKilos":75.0,"hungerDurationInTacts":1.0,"cell":{"x":5,"y":5,"availableDirections":[]},"isDead":false,"name":"Коза","weight":10.0,"maxNumberPerCell":50}]

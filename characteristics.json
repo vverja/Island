@@ -1,0 +1,99 @@
+[
+  {"name": "Волк",
+    "weight": 50,
+    "maxNumberPerCell": 30,
+    "speed": 3,
+    "foodForSatietyInKilos": 8
+  },
+  {"name": "Удав",
+    "weight": 15,
+    "maxNumberPerCell": 30,
+    "speed": 1,
+    "foodForSatietyInKilos": 3
+  },
+  {"name": "Лиса",
+    "weight": 8,
+    "maxNumberPerCell": 30,
+    "speed": 2,
+    "foodForSatietyInKilos": 2
+  },
+  {"name": "Медведь",
+    "weight": 500,
+    "maxNumberPerCell": 5,
+    "speed": 2,
+    "foodForSatietyInKilos": 80
+  },
+  {"name": "Орел",
+    "weight": 6,
+    "maxNumberPerCell": 20,
+    "speed": 2,
+    "foodForSatietyInKilos": 80
+  },
+  {"name": "Лошадь",
+    "weight": 400,
+    "maxNumberPerCell": 20,
+    "speed": 4,
+    "foodForSatietyInKilos": 60
+  },
+  {"name": "Олень",
+    "weight": 300,
+    "maxNumberPerCell": 20,
+    "speed": 4,
+    "foodForSatietyInKilos": 50
+  },
+  {"name": "Кролик",
+    "weight": 2,
+    "maxNumberPerCell": 150,
+    "speed": 2,
+    "foodForSatietyInKilos": 0.45
+  },
+  {"name": "Мышь",
+    "weight": 0.05,
+    "maxNumberPerCell": 500,
+    "speed": 1,
+    "foodForSatietyInKilos": 0.01
+  },
+  {"name": "Коза",
+    "weight": 60,
+    "maxNumberPerCell": 140,
+    "speed": 3,
+    "foodForSatietyInKilos": 10
+  },
+  {"name": "Овца",
+    "weight": 70,
+    "maxNumberPerCell": 140,
+    "speed": 3,
+    "foodForSatietyInKilos": 15
+  },
+  {"name": "Кабан",
+    "weight": 400,
+    "maxNumberPerCell": 50,
+    "speed": 2,
+    "foodForSatietyInKilos": 50
+  },
+  {"name": "Буйвол",
+    "weight": 700,
+    "maxNumberPerCell": 10,
+    "speed": 3,
+    "foodForSatietyInKilos": 100
+  },
+  {"name": "Утка",
+    "weight": 1,
+    "maxNumberPerCell": 200,
+    "speed": 4,
+    "foodForSatietyInKilos": 0.15
+  },
+  {"name": "Гусенница",
+    "weight": 0.01,
+    "maxNumberPerCell": 1000,
+    "speed": 0,
+    "foodForSatietyInKilos": 0
+  },
+  {
+    "name": "Растения",
+    "weight": 1,
+    "maxNumberPerCell": 200,
+    "speed": null,
+    "foodForSatietyInKilos": null
+  }
+]

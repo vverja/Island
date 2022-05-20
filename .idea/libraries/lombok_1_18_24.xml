@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="lombok-1.18.24">
+    <CLASSES>
+      <root url="jar://D:/JavaRush/required_libs/lombok-1.18.24.jar!/" />
+      <root url="jar://D:/JavaRush/required_libs/gson-2.9.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

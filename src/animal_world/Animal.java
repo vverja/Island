@@ -26,21 +26,25 @@ public abstract class Animal extends Unit{
     }
 
     public abstract void eat(Cell cell);
-
+    //передвижение животного
     public void move(Cell cell){
         //Вероятность перемещения 50/50
         if(ThreadLocalRandom.current().nextInt(2)==0)
             return;
+        //проверяем есть ли у животного на перемещение достаточно сил
         if (starvation(cell)){
             return;
         }
+        //уменьшаем сытость
         satietyPercent-=Game.getGameProperties().getSatietyConsumptionPerTurn();
-
+        //получаем количество клеток на которое перемещается животное
         int speed = ThreadLocalRandom.current().nextInt(getSpeed());
         if (speed==0)
             return;
+        //получаем ячейку по скорости и направлению
         Cell cellByCoordinates = getCellByDirection(cell, speed);
         if (!cell.equals(cellByCoordinates)) {
+            //добавляем животное в список на перемещение
             Game.putAnimalToDelayList(cellByCoordinates, this);
             cell.getAnimals().remove(this);
         }
@@ -48,7 +52,9 @@ public abstract class Animal extends Unit{
     }
 
     private Cell getCellByDirection(Cell cell, int speed) {
+        //получаем список доступных направлений
         ArrayList<Direction> availableDirections = cell.getAvailableDirections();
+        //проходимся по списку и согласно скорости определяем правильные координаты
         for (Direction direction: availableDirections
              ) {
             Optional<Cell> foundCell = switch (direction) {
@@ -58,6 +64,7 @@ public abstract class Animal extends Unit{
                 case LEFT -> Game.getCellByCoordinates(cell.getX() - speed, cell.getY());
             };
             if (foundCell.isPresent()) {
+                //проверяем можем ли мы переместится в эту клетку из-за перенаселения
                 int sizeOfPresentAnimals =  foundCell.get().getListOfAnimalsByName(getName()).size();
                 if (sizeOfPresentAnimals<getMaxNumberPerCell())
                     return foundCell.get();
@@ -65,7 +72,7 @@ public abstract class Animal extends Unit{
         }
         return cell;
     }
-
+    //проверяем если голод равен или меньше процента сытости при котором животное умирает
     private boolean starvation(Cell cell) {
         if (satietyPercent<=Game.getGameProperties().getDeathSatietyPercent()){
             Game.getStatistics().death(getName(),1L);

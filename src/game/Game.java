@@ -25,23 +25,34 @@ public class Game {
     private static final Map<Cell, ArrayList<Animal> > animalDelayList = new ConcurrentHashMap<>();
 
     public static void start(){
+        //получаем из джсон начальные настройки и вероятности
         fillGameProperties();
+        //создаем игровое поле
         createIsland();
+        //заполняем ячейки животными и растениями
         createLife();
+        //начинаем игру
         beginLifeCycle();
     }
 
     private static void beginLifeCycle() {
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
         scheduledExecutorService.scheduleAtFixedRate(()->{
+            //увеличиваем значение такта
             statistics.tactIncrement();
+            //печатаем статистику
             statistics.printStatistics();
+            //печатаем игровое поле
             printField();
+            //едим
             eat();
+            //размножаемсмя
             toBreed();
+            //дивгаемся
             move();
         },0, gameProperties.getTactDuration(),TimeUnit.MILLISECONDS);
         try {
+            //цикл бесконечный
             scheduledExecutorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -58,6 +69,7 @@ public class Game {
         service.shutdown();
         try {
             if(service.awaitTermination(gameProperties.getTactDuration()/4, TimeUnit.MILLISECONDS))
+                //если не уклаываемся во время четверти такта, задачи не выполняем
                 service.shutdownNow();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -76,6 +88,7 @@ public class Game {
 
         try {
             if(!service.awaitTermination(gameProperties.getTactDuration()/4, TimeUnit.MILLISECONDS))
+                //если не уклаываемся во время четверти такта, задачи не выполняем
                 service.shutdownNow();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -134,9 +147,6 @@ public class Game {
         }
     }
 
-
-
-
     private static void createIsland(){
         int rows = gameProperties.getFieldRows();
         int cols = gameProperties.getFieldColumns();
@@ -159,9 +169,7 @@ public class Game {
     }
 
     private static void createLife() {
-        int nThreads = gameProperties.getFieldColumns() *
-                gameProperties.getFieldRows();
-        ExecutorService executorService = Executors.newFixedThreadPool(nThreads);
+        ExecutorService executorService = Executors.newCachedThreadPool();
         PlantsFactory plantsFactory = new PlantsFactory();
         AnimalsFactory animalsFactory = new AnimalsFactory();
         Map<String, Characteristics> characteristicsMap = Arrays.stream(gameProperties.getAnimalCharacteristics())

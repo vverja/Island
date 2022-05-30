@@ -3,16 +3,16 @@ package animal_world.real_animals;
 import animal_world.Herbivore;
 
 
-public class Goat extends Herbivore {
-    public Goat(double weight,
+public class Boar extends Herbivore {
+    public Boar(double weight,
                 int maxNumberPerCell,
                 int speed,
                 double foodForSatietyInKilos) {
-        super("Коза", weight, maxNumberPerCell, speed, foodForSatietyInKilos);
+        super("Кабан", weight, maxNumberPerCell, speed, foodForSatietyInKilos);
     }
 
     @Override
     public String toString() {
-        return "\uD83D\uDC10";
+        return "\ud800\udc8b";
     }
 }

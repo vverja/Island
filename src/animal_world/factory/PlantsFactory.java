@@ -1,15 +1,13 @@
 package animal_world.factory;
 
 import animal_world.Plants;
-import animal_world.Unit;
-import game.Cell;
-
-import java.util.ArrayList;
+import game.Characteristics;
+import game.GameProperties;
 
 public class PlantsFactory implements LifeFactory{
     @Override
-    public Unit createUnit(Cell cell) {
-        double weight = 1;
-        return new Plants(weight,1000, cell);
+    public Plants createUnit(String name, GameProperties properties) {
+        Characteristics plantCharacteristic = properties.getCharacteristicsByName(name);
+        return new Plants(plantCharacteristic.getWeight(),plantCharacteristic.getMaxNumberPerCell());
     }
 }

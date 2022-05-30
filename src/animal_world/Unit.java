@@ -1,5 +1,7 @@
 package animal_world;
 
+import game.Cell;
+
 public abstract class Unit {
     private final String name;
     private final double weight;
@@ -23,5 +25,6 @@ public abstract class Unit {
         return name;
     }
 
-    public abstract void toBreed();
+
+    public abstract void toBreed(Cell cell);
 }

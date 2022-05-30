@@ -1,33 +1,27 @@
 package animal_world;
 
 
+import animal_world.factory.PlantsFactory;
 import game.Cell;
-import lombok.Getter;
-import lombok.Setter;
+import game.Game;
 
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Plants extends Unit{
-    @Getter
-    @Setter
-    private int number;
-    @Getter
-    private final Cell cell;
 
-    public Plants(double weight, int maxNumberPerCell, Cell cell) {
+    public Plants(double weight, int maxNumberPerCell) {
         super("Растение", weight, maxNumberPerCell);
-        this.cell = cell;
-        number = ThreadLocalRandom.current().nextInt(getMaxNumberPerCell());
     }
 
     @Override
-    public void toBreed() {
-        if (number<getMaxNumberPerCell())
-            number+= ThreadLocalRandom.current().nextInt(getMaxNumberPerCell()-number);
+    public void toBreed(Cell cell) {
+        CopyOnWriteArrayList<Plants> plants = cell.getPlants();
+        if (plants.size()<getMaxNumberPerCell())
+            plants.add(new PlantsFactory().createUnit("Растения", Game.getGameProperties()));
     }
 
     @Override
     public String toString() {
-        return "\\uD83C\\uDF3F";
+        return "\uD83C\uDF3F";
     }
 }
